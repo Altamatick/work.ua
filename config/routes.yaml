@@ -1,0 +1,17 @@
+minified:
+    path: /minified
+    controller: App\Controller\DefaultController::minified
+
+statistic:
+    path: /statistic
+    controller: App\Controller\DefaultController::statistic
+
+not_found:
+    path: /not_found
+    controller: App\Controller\DefaultController::not_found
+
+index:
+    path: /{rawMinifiedToken}
+    defaults:
+        rawMinifiedToken: ''
+    controller: App\Controller\DefaultController::index

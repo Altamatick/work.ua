@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+
+{% for message in app.flashes('error') %}
+    <div class="flash-error">
+        {{ message }}
+    </div>
+{% endfor %}
+
+<form action="{{ path('minified') }}" method="post">
+    <input type="text" name="url" placeholder="url"><br>
+    <input type="datetime-local" name="date-time"><br>
+    {% for message in app.flashes('notice') %}
+        <div class="flash-notice">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <button type="submit">Submit</button>
+</form>
+<a href="{{ path('statistic') }}">statistic</a>
+</body>
+</html>

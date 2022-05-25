@@ -1,0 +1,11 @@
+imports:
+  - { resource: "../src/Module/UrlMinimization/Config/services.yaml" }
+
+services:
+  _defaults:
+    public: true
+    autowire: true
+    autoconfigure: true
+
+  App\:
+    resource: '../src/App/'

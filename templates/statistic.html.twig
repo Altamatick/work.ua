@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Statistic</title>
+    </head>
+    <body>
+    <form action="{{ path('statistic') }}" method="post">
+        <input type="text" name="token" placeholder="token"><br>
+        {% for message in app.flashes('notice') %}
+            <div class="flash-notice">
+                {{ message }}
+            </div>
+        {% endfor %}
+        <button type="submit">Submit</button>
+    </form>
+    {% for transition in transitions %}
+        <div>
+            <span>{{ transition.date }}</span>
+            <span>{{ transition.token }}</span>
+        </div>
+    {% endfor %}
+    </body>
+</html>

@@ -1,0 +1,27 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    bind:
+      UrlMinimization\Domain\Entity\MinifiedTokenServiceInterface: '@UrlMinimization\Infrastructure\Service\RandomBytesMinifiedTokenService'
+      UrlMinimization\Domain\Entity\UrlRepositoryInterface: '@UrlMinimization\Infrastructure\Repository\FileUrlRepository'
+      UrlMinimization\Domain\Entity\Transition\TransitionRepositoryInterface: '@UrlMinimization\Infrastructure\Repository\FileTransitionRepository'
+      UrlMinimization\Domain\Entity\GetMinifiedUrlServiceInterface: '@UrlMinimization\Infrastructure\Service\GetMinifiedUrlService'
+      SharedKernel\Logger\LoggerInterface: '@App\Model\FileLogger'
+
+  UrlMinimization\Application\:
+    resource: '../Application/{Service,Transformer}'
+
+  UrlMinimization\Domain\:
+    resource: '../Domain/{Service}'
+
+  UrlMinimization\Infrastructure\:
+    resource: '../Infrastructure/**/{*Service*,*Repository*}'
+
+  UrlMinimization\Infrastructure\Service\GetMinifiedUrlService:
+    arguments:
+      $protocol: 'http'
+      $host: 'localhost'
+      $port: '8000'
+
+  Symfony\Component\Cache\Adapter\FilesystemAdapter: ~
