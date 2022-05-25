@@ -5,10 +5,14 @@ TASK
 Реализация на РНР, симфони.
 
 init
-php composer.phar install
+git clone https://github.com/Altamatick/work.ua.git {test_dir}
+cd {test_dir}
+php composer.phar install (need php version >= 7.4)
 
-run
-start php -S localhost:8000
+start
+cd {test_dir}/public
+php -S localhost:8000
 
+open
 http://localhost:8080
 http://localhost:8080/statistic
